@@ -1,0 +1,86 @@
+﻿<Window x:Class="AssignTask.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AssignTask"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="599" Width="800">
+    <Window.Resources>
+        <Storyboard x:Key="sb1">
+            <DoubleAnimation Storyboard.TargetName="wrapPanel1" Storyboard.TargetProperty="Width" From="160" To="50" Duration="0:0:0.3"></DoubleAnimation>
+            <DoubleAnimation Storyboard.TargetName="menuWrapPanel2" Storyboard.TargetProperty="Width" From="160" To="50" Duration="0:0:0.3"></DoubleAnimation>
+            <DoubleAnimation Storyboard.TargetName="homeLabel1" Storyboard.TargetProperty="Width" From="107" To="0" Duration="0:0:0.3"></DoubleAnimation>
+            <DoubleAnimation Storyboard.TargetName="taskAssignLabel1" Storyboard.TargetProperty="Width" From="60" To="0" Duration="0:0:0.3"></DoubleAnimation>
+            <DoubleAnimation Storyboard.TargetName="mainwarpPanel1" Storyboard.TargetProperty="Width" From="632" To="745" Duration="0:0:0.3"></DoubleAnimation>
+            <DoubleAnimation Storyboard.TargetName="taskListBox1" Storyboard.TargetProperty="Width" From="208" To="320" Duration="0:0:0.3"></DoubleAnimation>
+        </Storyboard>
+        <Storyboard x:Key="sb2">
+            <DoubleAnimation Storyboard.TargetName="wrapPanel1" Storyboard.TargetProperty="Width" From="50" To="160" Duration="0:0:0.3"></DoubleAnimation>
+            <DoubleAnimation Storyboard.TargetName="menuWrapPanel2" Storyboard.TargetProperty="Width" From="50" To="160" Duration="0:0:0.3"></DoubleAnimation>
+            <DoubleAnimation Storyboard.TargetName="homeLabel1" Storyboard.TargetProperty="Width" From="0" To="107" Duration="0:0:0.3"></DoubleAnimation>
+            <DoubleAnimation Storyboard.TargetName="taskAssignLabel1" Storyboard.TargetProperty="Width" From="0" To="60" Duration="0:0:0.3"></DoubleAnimation>
+            <DoubleAnimation Storyboard.TargetName="mainwarpPanel1" Storyboard.TargetProperty="Width" From="745" To="632" Duration="0:0:0.3"></DoubleAnimation>
+            <DoubleAnimation Storyboard.TargetName="taskListBox1" Storyboard.TargetProperty="Width" From="320" To="208" Duration="0:0:0.3"></DoubleAnimation>
+        </Storyboard>
+    </Window.Resources>
+    <Grid Background="WhiteSmoke" Height="421" Width="793" VerticalAlignment="Top">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0*"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <WrapPanel Background="LightBlue" Opacity="0.8" x:Name="wrapPanel1" Margin="0,0,0,-1" Width="160" HorizontalAlignment="Left" Height="373" VerticalAlignment="Bottom" Grid.RowSpan="2">
+            <Label Content="觀看專案工作包" x:Name="homeLabel1" Width="107" HorizontalAlignment="Right" Margin="45,10,0,0" FontFamily="Modern No. 20" />
+            <Label Content="工作配置" x:Name="taskAssignLabel1" HorizontalAlignment="Left" VerticalAlignment="Top" Width="60" FontFamily="Modern No. 20" Margin="45,12,0,0"/>
+            <Label Content="觀看成員工作狀態" x:Name="workLoadLabel1" HorizontalAlignment="Left" VerticalAlignment="Top" Width="108" FontFamily="Modern No. 20" Margin="45,15,0,0"/>
+        </WrapPanel>
+        <WrapPanel x:Name="menuWrapPanel2" HorizontalAlignment="Left" Height="50" VerticalAlignment="Top" Width="160" Background="LightBlue" Grid.RowSpan="2"/>
+        <Image HorizontalAlignment="Left" x:Name="menuImg1" Height="46" Margin="0,2,0,0" VerticalAlignment="Top" Width="60" Source="Image/Menu_icon_icon-icons.com_71858.png" MouseDown="Image_MouseDown" MouseEnter="menuImg1_MouseEnter" MouseLeave="menuImg1_MouseLeave" Grid.RowSpan="2"/>
+        <Image HorizontalAlignment="Left" x:Name="homeImg1" Height="32" Margin="7,50,0,0" VerticalAlignment="Top" Width="40" Source="Image/home-512.png" MouseEnter="homeImg1_MouseEnter" MouseLeave="homeImg1_MouseLeave" MouseDown="homeImg1_MouseDown" Grid.RowSpan="2"/>
+        <Image HorizontalAlignment="Left" x:Name="taskAssignImg1" Height="32" Margin="8,91,0,0" VerticalAlignment="Top" Width="33" Source="Image/TaskToEmployee.png" MouseEnter="taskAssignImg1_MouseEnter" MouseLeave="taskAssignImg1_MouseLeave" MouseDown="taskAssignImg1_MouseDown" Grid.RowSpan="2"/>
+        <Image x:Name="workLoadingImg1" HorizontalAlignment="Left" Height="32" Margin="7,130,0,0" VerticalAlignment="Top" Width="33" Source="Image/advising-clipart-reduction-1.png" MouseEnter="workLoadingImg1_MouseEnter"  MouseLeave="workLoadingImg1_MouseLeave" Grid.RowSpan="2" MouseDown="workLoadingImg1_MouseDown"/>
+        <WrapPanel x:Name="mainwarpPanel1" HorizontalAlignment="Right" Background="White" Width="632" Grid.RowSpan="2">
+            <WrapPanel Height="423" Width="424" VerticalAlignment="Top" Background="DimGray" x:Name="mainWindow" Opacity="0.95">
+                <ScrollViewer Height="387" Width="423" Margin="0,5,0,0" VerticalScrollBarVisibility="Auto">
+                    <WrapPanel Background="LightBlue" x:Name="mainWindow2">
+                        <StackPanel Height="26" Width="414" Orientation="Horizontal" Background="Black">
+                            <Button Content="重新分配" Margin="2" Click="Button_Click_3"/>
+                            <Button Content="新增備註" Margin="2,2,2,0" Height="22" VerticalAlignment="Top" Click="Button_Click" />
+                            <Button Content="配置完成" Margin="2,0,2,2" Height="22" VerticalAlignment="Bottom" Click="Button_Click_2"/>
+                            <Button Content="匯出成Excel" Margin="2" Click="Button_Click_1" Width="79"/>
+                            <Button Content="test" Width="47" Margin="0,2"/>
+                        </StackPanel>
+                        <Label Content="專案成員" Width="414" Foreground="Red"/>
+                        <ScrollViewer Name="scr1" Height="161" Width="408" Margin="5" VerticalScrollBarVisibility="Auto">
+                            <WrapPanel Background="Black" x:Name="teamMemberWrapPanel"/>
+                        </ScrollViewer>
+                        <Label Content="None Select" Width="415" Foreground="Red" x:Name="taskRunInTitle"/>
+                        <ScrollViewer  Height="121" Width="407" Margin="5" VerticalScrollBarVisibility="Auto">
+                            <TextBlock Background="white" Text="作業描述" Name="taskDesc"/>
+                        </ScrollViewer>
+                    </WrapPanel>
+                </ScrollViewer>
+            </WrapPanel>
+            <ListBox x:Name ="taskListBox1" Height="421" Width="208" SelectionChanged="taskListBox1_SelectionChanged">
+                <ListBox.Resources>
+                    <Style TargetType="{x:Type Label}">
+                        <EventSetter Event="UIElement.MouseLeftButtonDown" Handler="DragActivityName"/>
+                    </Style>
+                </ListBox.Resources>
+                <ListBoxItem Content="工作項目"/>
+            </ListBox>
+        </WrapPanel>
+        <DataGrid HorizontalAlignment="Left" Name="dataGrid1" Height="143" Margin="0,422,0,-144" Grid.RowSpan="2" VerticalAlignment="Top" Width="793" MouseDoubleClick="dataGrid1_MouseDoubleClick" IsReadOnly="True" GridLinesVisibility="None">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="員工編號" Binding="{Binding EmployeeID}"/>
+                <DataGridTextColumn Header="員工姓名" Binding="{Binding EmployeeName}"/>
+                <DataGridTextColumn Header="所屬部門" Binding="{Binding Dep}"/>
+                <DataGridTextColumn Header="分配工作" Binding="{Binding Task}"/>
+                <DataGridTextColumn Header="工作描述" Binding="{Binding Desc}"/>
+                <!--<DataGridTextColumn Header="工作預計開始時間" Binding="{Binding Desc}"/>
+                <DataGridTextColumn Header="工作預計結束時間" Binding="{Binding Desc}"/>-->
+            </DataGrid.Columns>
+        </DataGrid>
+        <Label Name="gridLabel1" Content="分配人員後資訊會顯示在此處" HorizontalAlignment="Left" Height="100" Margin="8,452,0,-130.667" Grid.RowSpan="2" VerticalAlignment="Top" Width="623" Opacity="0.5" FontSize="30"/>
+    </Grid>
+</Window>
